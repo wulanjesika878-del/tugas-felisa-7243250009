@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Felisa Angel — Menuju Yonsei</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --maroon:      #6b1a1a;
+      --maroon-dark: #4a1010;
+      --maroon-soft: #f0d5cc;
+      --cream:       #fffaf7;
+      --accent:      #c9534f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #f5f0eb 0%, #ede3dc 100%);
+      min-height: 100vh;
+      color: #2a0a0a;
+    }
+
+    /* ── NAVBAR ────────────────────── */
+    .navbar-custom {
+      background: rgba(107,26,26,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar-custom .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #fffaf7 !important;
+      letter-spacing: 1px;
+    }
+    .navbar-custom .nav-link {
+      color: rgba(255,250,247,0.8) !important;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .navbar-custom .nav-link:hover { color: #fffaf7 !important; }
+    .navbar-toggler { border-color: rgba(255,250,247,0.4); }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,250,247,0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ── HERO ──────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 60px;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(107,26,26,0.08) 0%, transparent 70%),
+        radial-gradient(circle at 10% 80%, rgba(201,83,79,0.06) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 520px;
+    }
+
+    /* ── RESPONSIVE TEXT COLORS ───── */
+    /* Desktop (≥ 768px) → maroon tones */
+    @media (min-width: 768px) {
+      .hero-name        { color: var(--maroon-dark); }
+      .hero-subtitle    { color: var(--maroon); opacity: 0.75; }
+      .hero-desc        { color: #3a1a1a; }
+      .section-title    { color: var(--maroon); }
+      .section-label    { color: var(--accent); }
+      .card-text-main   { color: #3a1a1a; }
+      .card-text-sub    { color: #6b3535; }
+      .highlight-text   { color: var(--maroon-dark); }
+      .footer-text      { color: #8b4a4a; }
+      .table-cell       { color: #3a1a1a; }
+      .prep-item        { color: #3a1a1a; }
+    }
+
+    /* Mobile (< 768px) → deeper slate/inky tones */
+    @media (max-width: 767.98px) {
+      .hero-name        { color: #1a1a2e; }
+      .hero-subtitle    { color: #16213e; opacity: 0.8; }
+      .hero-desc        { color: #0f3460; }
+      .section-title    { color: #16213e; }
+      .section-label    { color: #e94560; }
+      .card-text-main   { color: #0f3460; }
+      .card-text-sub    { color: #16213e; }
+      .highlight-text   { color: #1a1a2e; }
+      .footer-text      { color: #16213e; }
+      .table-cell       { color: #0f3460; }
+      .prep-item        { color: #0f3460; }
+    }
+
+    /* ── SECTIONS ──────────────────── */
+    .section-block {
+      padding: 80px 0;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 38px);
+      margin-bottom: 24px;
+      line-height: 1.25;
+    }
+    .divider-line {
+      width: 48px;
+      height: 3px;
+      background: var(--maroon);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* ── IMAGE CARD ────────────────── */
+    .img-card {
+      border: 2px solid rgba(107,26,26,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(107,26,26,0.12);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .img-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 70px rgba(107,26,26,0.18);
+    }
+    .img-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+    .img-card-caption {
+      background: var(--cream);
+      padding: 16px 20px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      font-weight: 500;
+    }
+
+    /* ── REASON CARDS ──────────────── */
+    .reason-card {
+      background: var(--cream);
+      border: 1px solid rgba(107,26,26,0.12);
+      border-radius: 14px;
+      padding: 28px 24px;
+      height: 100%;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      cursor: default;
+    }
+    .reason-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(107,26,26,0.1);
+      border-color: rgba(107,26,26,0.3);
+    }
+    .reason-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--maroon-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+    .reason-card h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .reason-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    /* ── SKY TABLE ─────────────────── */
+    .sky-table {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(107,26,26,0.15);
+      box-shadow: 0 8px 32px rgba(107,26,26,0.07);
+    }
+    .sky-table thead th {
+      background: var(--maroon);
+      color: #fffaf7;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 18px;
+      border: none;
+      font-weight: 500;
+    }
+    .sky-table td {
+      padding: 13px 18px;
+      border-color: rgba(107,26,26,0.08);
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .sky-table tr:nth-child(even) td { background: #fdf6f2; }
+    .sky-table .yonsei-row td { background: rgba(107,26,26,0.05); }
+    .star-badge {
+      display: inline-block;
+      background: var(--maroon-soft);
+      color: var(--maroon);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 6px;
+    }
+
+    /* ── PREP STEPS ────────────────── */
+    .prep-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(107,26,26,0.08);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .prep-step:last-child { border-bottom: none; }
+    .prep-step.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--maroon);
+      color: #fffaf7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .step-content h6 {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+    .step-content p {
+      font-size: 13px;
+      opacity: 0.75;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── MARK HIGHLIGHT ────────────── */
+    mark {
+      background: var(--maroon-soft);
+      color: var(--maroon);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    /* ── PROGRESS BAR ──────────────── */
+    .progress-custom {
+      height: 6px;
+      background: rgba(107,26,26,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--maroon);
+      border-radius: 10px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* ── CTA BUTTON ────────────────── */
+    .btn-maroon {
+      background: var(--maroon);
+      color: #fffaf7;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background .3s, transform .2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-maroon:hover {
+      background: var(--maroon-dark);
+      color: #fffaf7;
+      transform: translateY(-2px);
+    }
+    .btn-outline-maroon {
+      background: transparent;
+      color: var(--maroon);
+      border: 1.5px solid var(--maroon);
+      padding: 11px 28px;
+      border-radius: 40px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all .3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline-maroon:hover {
+      background: var(--maroon);
+      color: #fffaf7;
+    }
+
+    /* ── FOOTER ────────────────────── */
+    footer {
+      background: var(--maroon-dark);
+      color: rgba(255,250,247,0.7);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    footer strong { color: #fffaf7; }
+
+    /* ── DEVICE BADGE (jQuery info) ── */
+    #device-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: all .3s;
+      cursor: pointer;
+    }
+    #device-badge.desktop {
+      background: var(--maroon);
+      color: #fffaf7;
+    }
+    #device-badge.mobile {
+      background: #1a1a2e;
+      color: #e94560;
+    }
+
+    /* ── SCROLL FADE ───────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── TOOLTIP for table ─────────── */
+    [data-bs-toggle="tooltip"] { cursor: help; }
+
+    /* ── ACCORDION CUSTOM ──────────── */
+    .accordion-item {
+      border: 1px solid rgba(107,26,26,0.12) !important;
+      margin-bottom: 10px;
+      border-radius: 12px !important;
+      overflow: hidden;
+    }
+    .accordion-button {
+      font-weight: 500;
+      color: var(--maroon) !important;
+      background: var(--cream) !important;
+      font-size: 15px;
+    }
+    .accordion-button:not(.collapsed) {
+      background: var(--maroon-soft) !important;
+      box-shadow: none !important;
+    }
+    .accordion-button::after {
+      filter: sepia(1) hue-rotate(300deg) saturate(2);
+    }
+    .accordion-body {
+      font-size: 14px;
+      line-height: 1.8;
+      background: var(--cream);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────── -->
+  <nav class="navbar navbar-expand-md navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Felisa A.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#alasan">Mengapa Yonsei</a></li>
+          <li class="nav-item"><a class="nav-link" href="#perbandingan">Perbandingan</a></li>
+          <li class="nav-item"><a class="nav-link" href="#persiapan">Persiapan</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <p class="hero-eyebrow fade-up">Mahasiswa Bisnis Digital · Unimed 2024</p>
+          <h1 class="hero-name fade-up" style="transition-delay:.1s">
+            Halo, Saya<br>Felisa Angel<br>Putri Simatupang
+          </h1>
+          <p class="hero-subtitle fade-up" style="transition-delay:.2s">
+            Universitas Negeri Medan &mdash; 7243250009
+          </p>
+          <p class="hero-desc fade-up" style="transition-delay:.3s">
+            Seorang mahasiswa yang sedang bermimpi besar untuk mengikuti program pertukaran pelajar ke
+            <mark>Yonsei University</mark>, salah satu universitas terbaik di
+            <mark>Korea Selatan</mark>. Halaman ini adalah cerita perjalanan saya.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4 fade-up" style="transition-delay:.4s">
+            <a href="#persiapan" class="btn-maroon">Lihat Persiapan Saya</a>
+            <a href="#alasan" class="btn-outline-maroon">Mengapa Yonsei?</a>
+          </div>
+        </div>
+        <div class="col-lg-5 fade-up" style="transition-delay:.2s">
+          <!-- Skill progress visual -->
+          <div style="background:var(--cream); border-radius:16px; padding:28px; border:1px solid rgba(107,26,26,0.12); box-shadow:0 12px 40px rgba(107,26,26,0.08);">
+            <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:500;">Progress Persiapan</p>
+            <div class="mb-3">
+              <div class="skill-label"><span class="card-text-sub">IPK Target ≥ 3.5</span><span class="card-text-sub">82%</span></div>
+              <div class="progress-custom"><div class="progress-fill" data-width="82"></div></div>
+            </div>
+            <div class="mb-3">
+              <div class="skill-label"><span class="card-text-sub">Bahasa Korea (TOPIK)</span><span class="card-text-sub">55%</span></div>
+              <div class="progress-custom"><div class="progress-fill" data-width="55"></div></div>
+            </div>
+            <div class="mb-3">
+              <div class="skill-label"><span class="card-text-sub">Bahasa Inggris (IELTS)</span><span class="card-text-sub">70%</span></div>
+              <div class="progress-custom"><div class="progress-fill" data-width="70"></div></div>
+            </div>
+            <div class="mb-3">
+              <div class="skill-label"><span class="card-text-sub">Motivation Letter</span><span class="card-text-sub">40%</span></div>
+              <div class="progress-custom"><div class="progress-fill" data-width="40"></div></div>
+            </div>
+            <div>
+              <div class="skill-label"><span class="card-text-sub">Pendaftaran Program</span><span class="card-text-sub">20%</span></div>
+              <div class="progress-custom"><div class="progress-fill" data-width="20"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOTO ────────────────────────── -->
+  <section id="tentang" class="section-block" style="background:var(--cream);">
+    <div class="container">
+      <div class="row justify-content-center g-5 align-items-center">
+        <div class="col-md-5 fade-up">
+          <div class="img-card">
+            <img src="yonsei.jpg" alt="Kampus Yonsei University, Seoul"
+                 onerror="this.style.background='linear-gradient(135deg,#6b1a1a,#c9534f)'; this.style.height='340px'; this.alt=''; this.insertAdjacentHTML('afterend','<div style=\'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fffaf7;text-align:center;font-family:Playfair Display,serif;font-size:18px;\'>Yonsei University<br>Seoul, Korea</div>')">
+            <div class="img-card-caption">
+              <i class="bi bi-geo-alt-fill me-1"></i>Yonsei University · Seoul, Korea Selatan
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 fade-up" style="transition-delay:.15s">
+          <p class="section-label">Cerita Saya</p>
+          <h2 class="section-title">Mimpi yang Terus<br>Menggerakkan</h2>
+          <div class="divider-line"></div>
+          <p class="card-text-main" style="font-size:15px; line-height:1.9;">
+            Sejak pertama kali mendengar tentang program pertukaran pelajar, impian saya selalu
+            tertuju pada satu nama: <mark>Yonsei University</mark>. Bukan hanya karena
+            reputasinya yang gemilang, tapi karena semangat akademik dan budaya internasional
+            yang dimilikinya menginspirasi saya setiap hari.
+          </p>
+          <p class="card-text-main" style="font-size:15px; line-height:1.9; margin-top:12px;">
+            Sebagai mahasiswa <mark>Bisnis Digital</mark> di Universitas Negeri Medan, saya percaya
+            bahwa pengalaman belajar di Korea Selatan akan membuka wawasan baru dan memperluas
+            jaringan global saya.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ALASAN ──────────────────────── -->
+  <section id="alasan" class="section-block">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <p class="section-label">Motivasi Saya</p>
+        <h2 class="section-title">Mengapa Yonsei University?</h2>
+        <div class="divider-line mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3 fade-up">
+          <div class="reason-card">
+            <div class="reason-icon">🏛️</div>
+            <h5 class="highlight-text">SKY University</h5>
+            <p class="card-text-main">Bagian dari trio universitas elit Korea — SNU, Korea, dan Yonsei — pengakuan dunia.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up" style="transition-delay:.1s">
+          <div class="reason-card">
+            <div class="reason-icon">🌍</div>
+            <h5 class="highlight-text">100+ Negara Mitra</h5>
+            <p class="card-text-main">Program internasional dengan jaringan lebih dari 100 negara, membuka peluang global.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up" style="transition-delay:.2s">
+          <div class="reason-card">
+            <div class="reason-icon">🔬</div>
+            <h5 class="highlight-text">Riset Kelas Dunia</h5>
+            <p class="card-text-main">Fasilitas perpustakaan dan laboratorium riset berstandar internasional yang luar biasa.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up" style="transition-delay:.3s">
+          <div class="reason-card">
+            <div class="reason-icon">🏙️</div>
+            <h5 class="highlight-text">Kampus Ikonik Seoul</h5>
+            <p class="card-text-main">Berlokasi di Sinchon, Seoul — pusat budaya modern dan historis Korea Selatan.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion FAQ -->
+      <div class="row mt-5">
+        <div class="col-lg-8 offset-lg-2 fade-up">
+          <p class="section-label text-center mb-4">Pertanyaan Umum</p>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Apa itu SKY Universities?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body card-text-main">
+                  SKY adalah akronim dari tiga universitas paling bergengsi di Korea Selatan:
+                  <mark>S</mark>eoul National University, <mark>K</mark>orea University, dan
+                  <mark>Y</mark>onsei University. Ketiganya dikenal dengan standar akademik tertinggi
+                  dan alumni yang menjadi pemimpin di berbagai bidang.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Berapa lama program pertukaran pelajar?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body card-text-main">
+                  Program pertukaran pelajar umumnya berlangsung selama <mark>1 semester (6 bulan)</mark>
+                  hingga <mark>1 tahun akademik</mark>. Peserta dapat mengambil mata kuliah yang diakui
+                  oleh universitas asal.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Apa syarat bahasa yang dibutuhkan?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body card-text-main">
+                  Yonsei mensyaratkan kemampuan bahasa Korea minimal <mark>TOPIK Level 3</mark> untuk
+                  program berbahasa Korea, atau <mark>IELTS 6.0 / TOEFL iBT 80</mark> untuk program
+                  berbahasa Inggris.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TABEL SKY ────────────────────── -->
+  <section id="perbandingan" class="section-block" style="background:var(--cream);">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <p class="section-label">Data Perbandingan</p>
+        <h2 class="section-title">Universitas SKY Korea</h2>
+        <div class="divider-line mx-auto"></div>
+      </div>
+      <div class="row justify-content-center fade-up">
+        <div class="col-lg-10">
+          <div class="sky-table">
+            <table class="table table-borderless mb-0">
+              <thead>
+                <tr>
+                  <th>Universitas</th>
+                  <th>Lokasi</th>
+                  <th>Berdiri</th>
+                  <th>Keunggulan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="yonsei-row">
+                  <td>
+                    <strong class="highlight-text">Yonsei University</strong>
+                    <span class="star-badge">⭐ Pilihan Saya</span>
+                  </td>
+                  <td class="table-cell">Seoul (Sinchon)</td>
+                  <td class="table-cell">1885</td>
+                  <td class="table-cell" data-bs-toggle="tooltip" title="Program unggulan internasional">
+                    Bisnis, Kedokteran, Liberal Arts
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-cell fw-medium">Seoul National University</td>
+                  <td class="table-cell">Seoul (Gwanak)</td>
+                  <td class="table-cell">1946</td>
+                  <td class="table-cell">Sains, Teknik, Hukum</td>
+                </tr>
+                <tr>
+                  <td class="table-cell fw-medium">Korea University</td>
+                  <td class="table-cell">Seoul (Anam)</td>
+                  <td class="table-cell">1905</td>
+                  <td class="table-cell">Ekonomi, Hukum, Sosial</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:12px; text-align:center; margin-top:14px; opacity:.6;" class="card-text-sub">
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PERSIAPAN ────────────────────── -->
+  <section id="persiapan" class="section-block">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-5 fade-up">
+          <p class="section-label">Langkah Nyata</p>
+          <h2 class="section-title">Persiapan Saya<br>Menuju Yonsei</h2>
+          <div class="divider-line"></div>
+          <p class="card-text-main" style="font-size:15px; line-height:1.9;">
+            Setiap langkah adalah bagian dari perjalanan panjang menuju impian.
+            Saya percaya bahwa konsistensi dan dedikasi akan membawa saya ke Seoul.
+          </p>
+          <div class="mt-4 p-3" style="background:var(--maroon-soft); border-radius:12px; border-left:3px solid var(--maroon);">
+            <p style="font-size:13px; color:var(--maroon); margin:0; line-height:1.7;">
+              <i class="bi bi-quote me-1"></i>
+              <em>"Mimpi bukan sekadar keinginan, tapi komitmen yang diwujudkan satu langkah setiap harinya."</em>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-1">
+          <div id="prep-steps">
+            <div class="prep-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h6 class="highlight-text">Meningkatkan IPK ≥ 3.5</h6>
+                <p class="prep-item">Fokus pada setiap mata kuliah dan aktif di kegiatan akademik untuk membangun rekam jejak yang kuat.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h6 class="highlight-text">Belajar Bahasa Korea (TOPIK Level 3+)</h6>
+                <p class="prep-item">Belajar secara mandiri dan mengikuti kelas bahasa Korea intensif untuk mencapai level yang disyaratkan.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h6 class="highlight-text">Sertifikasi Bahasa Inggris (IELTS/TOEFL)</h6>
+                <p class="prep-item">Mempersiapkan diri dengan kursus IELTS untuk memenuhi standar kemampuan bahasa internasional.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h6 class="highlight-text">Menulis Motivation Letter yang Kuat</h6>
+                <p class="prep-item">Menyampaikan cerita dan motivasi yang autentik, didukung prestasi dan tujuan akademik yang jelas.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h6 class="highlight-text">Mendaftar Program Pertukaran Pelajar</h6>
+                <p class="prep-item">Mengikuti prosedur resmi pendaftaran melalui kantor urusan internasional Universitas Negeri Medan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────── -->
+  <footer>
+    <div class="container">
+      <p class="footer-text mb-1" style="font-size:18px; font-family:'Playfair Display',serif; font-weight:700; color:#fffaf7;">Felisa Angel Putri Simatupang</p>
+      <p class="footer-text" style="margin:0; color:rgba(255,250,247,0.6);">7243250009 &nbsp;·&nbsp; Bisnis Digital &nbsp;·&nbsp; Universitas Negeri Medan &nbsp;·&nbsp; 2026</p>
+      <div style="margin-top:20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,250,247,0.35);">
+        Dibuat dengan <span style="color:#c9534f;">♥</span> untuk mimpi yang lebih besar
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── DEVICE BADGE (jQuery) ─────────── -->
+  <div id="device-badge"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+
+      /* ── 1. DEVICE DETECTION & BADGE (jQuery) ── */
+      function updateDeviceBadge() {
+        var w = $(window).width();
+        var $badge = $('#device-badge');
+        if (w >= 768) {
+          $badge.text('🖥 Desktop Mode').removeClass('mobile').addClass('desktop');
+        } else {
+          $badge.text('📱 Mobile Mode').removeClass('desktop').addClass('mobile');
+        }
+      }
+      updateDeviceBadge();
+      $(window).on('resize', updateDeviceBadge);
+
+      /* Click badge to show color info */
+      $('#device-badge').on('click', function () {
+        var w = $(window).width();
+        if (w >= 768) {
+          alert('🖥️ Desktop Mode\nWarna teks: Maroon & deep red tones (#6b1a1a, #4a1010, #3a1a1a)\nTema: Hangat & elegan');
+        } else {
+          alert('📱 Mobile Mode\nWarna teks: Navy & deep blue tones (#1a1a2e, #0f3460, #16213e)\nTema: Modern & dinamis');
+        }
+      });
+
+      /* ── 2. SCROLL FADE-IN (jQuery + Intersection Observer) ── */
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            $(entry.target).addClass('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      $('.fade-up').each(function () { observer.observe(this); });
+      $('.prep-step').each(function () { observer.observe(this); });
+
+      /* Trigger hero items immediately */
+      setTimeout(function () {
+        $('#hero .fade-up').each(function (i) {
+          var $el = $(this);
+          setTimeout(function () { $el.addClass('visible'); }, i * 120);
+        });
+      }, 200);
+
+      /* ── 3. PROGRESS BARS (jQuery) ── */
+      var progressObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            $(entry.target).find('.progress-fill').each(function () {
+              var w = $(this).data('width');
+              $(this).css('width', w + '%');
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+      progressObserver.observe($('#hero')[0]);
+
+      /* ── 4. SMOOTH SCROLL (jQuery) ── */
+      $('a[href^="#"]').on('click', function (e) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+          e.preventDefault();
+          $('html, body').animate({ scrollTop: target.offset().top - 70 }, 600, 'swing');
+        }
+      });
+
+      /* ── 5. NAVBAR SCROLL EFFECT (jQuery) ── */
+      $(window).on('scroll', function () {
+        if ($(this).scrollTop() > 50) {
+          $('.navbar-custom').css('box-shadow', '0 2px 20px rgba(107,26,26,0.2)');
+        } else {
+          $('.navbar-custom').css('box-shadow', 'none');
+        }
+      });
+
+      /* ── 6. BOOTSTRAP TOOLTIPS ── */
+      $('[data-bs-toggle="tooltip"]').each(function () {
+        new bootstrap.Tooltip(this);
+      });
+
+      /* ── 7. ACTIVE NAV HIGHLIGHT (jQuery scroll spy) ── */
+      $(window).on('scroll', function () {
+        var scrollPos = $(this).scrollTop() + 80;
+        $('section[id]').each(function () {
+          var top = $(this).offset().top;
+          var bottom = top + $(this).outerHeight();
+          var id = $(this).attr('id');
+          if (scrollPos >= top && scrollPos < bottom) {
+            $('.nav-link').removeClass('active').css('color', '');
+            $('.nav-link[href="#' + id + '"]').addClass('active').css('color', '#fffaf7');
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
